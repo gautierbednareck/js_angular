@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>liste js</title>
+</head>
+
+<body>
+  <input type="text" id="word">
+  <input type="button" onClick="add()" value="add">
+  <ul id="liste"></ul>
+
+  <script type="text/javascript">
+    for (var i = 0; i < sessionStorage.length; i++) {
+      var newLis = document.createElement('li');
+      var elementReturn = sessionStorage.getItem('li' + i);
+      newLis.innerHTML = elementReturn;
+      document.getElementById('liste').appendChild(newLis);
+    }
+
+    function add() {
+      var newLi = document.createElement('li');
+      var content = document.getElementById('word').value;
+      console.log("text: " + content);
+
+      //ajout
+      console.log("compteur: " + sessionStorage.length);
+      sessionStorage.setItem('li' + sessionStorage.length, content);
+
+      //attribution des valeurs
+      newLi.innerHTML = content;
+      console.log(newLi);
+
+      //ajout des valeurs
+      document.getElementById('liste').appendChild(newLi);
+
+      /**
+       * stocker le nombre d'éléments n'est pas nécessaire, vous pouvez récupérer la taille de la sessionStorage
+       */
+    }
+  </script>
+</body>
+
+</html>
