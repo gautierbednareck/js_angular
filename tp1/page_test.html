@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>liste js</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function add() {
+			// def des valeur
+			var containt= document.getElementById('word').value;
+			var newLi=document.createElement('li');
+			console.log(containt);
+
+			//attribution des valeurs
+			newLi.innerHTML=containt;
+			console.log(newLi);
+			//ajout des valeurs
+			document.getElementById('liste').appendChild(newLi);
+
+			
+		}
+	</script>
+
+	<input type="text" id="word">
+	<input type="button" onClick="add();" value="add"  >
+	<ul id="liste">
+		
+	</ul>
+	
+</body>
+</html>
+
