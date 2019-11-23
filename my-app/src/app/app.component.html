@@ -1,0 +1,13 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <input name="name" type="name" ngModel required #first="ngModel">
+  <input name="date" type="date" value="{{ date }}" ngModel required #first="ngModel">
+  <button>Submit</button>
+</form>
+
+<ul>
+  <li *ngFor="let item of tasks">
+    {{ item.date }} - {{ item.name }}
+  </li>
+</ul>
+
+{{ title }}
