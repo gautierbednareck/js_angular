@@ -1,7 +1,7 @@
 <!-- <router-outlet></router-outlet> -->
 
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+<!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
   <input name="name" type="name" ngModel required #first="ngModel">
   <input name="date" type="date" value="{{ date }}" ngModel required #first="ngModel">
   <button>Submit</button>
@@ -11,6 +11,26 @@
   <li *ngFor="let item of tasks">
     {{ item.date }} - {{ item.name }}
   </li>
-</ul>
+</ul> -->
 
-{{ title }}
+<!-- exo passage var -->
+<!-- <app-name
+[test]="title"
+(messageEvent)="receiveMessage($event)"> </app-name>
+
+{{ message }} -->
+
+<!-- envoie tout le contenu des composant vers leur adesse défnis
+nom pour tous les composant
+-->
+<ul>
+  <!-- on fait appelle au compossant par l'intermédière de
+  routerLink="mot defini dans le path" -->
+  <li routerLink="/test">go page test</li>
+  <li routerLink="/Lop">go page test2</li>
+  <li routerLink="/">Home</li>
+</ul>
+<router-outlet>
+
+</router-outlet>
+

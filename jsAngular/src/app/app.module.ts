@@ -4,14 +4,19 @@ import { FormsModule, NgForm } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NameComponent } from './name/name.component';
+import { RoutingModule } from './routing/routing.module';
+import { Routing2Module } from './routing2/routing2.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NameComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RoutingModule,
+    Routing2Module,
     FormsModule
   ],
   providers: [],

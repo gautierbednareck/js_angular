@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-name',
@@ -7,10 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NameComponent implements OnInit {
 
-  @Input() test:string
+  @Input() test: string
   //comunique avec les parent par l'input
+  @Output() messageEvent=new EventEmitter <string>();
   constructor() { }
-
+  sendMessage(){
+    console.log('sendMessage()')
+    this.messageEvent.emit("this.message")
+  }
   ngOnInit() {
   }
 
