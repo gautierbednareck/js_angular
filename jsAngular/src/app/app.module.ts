@@ -12,7 +12,7 @@ import { LopComponent } from './lop/lop.component';
   declarations: [
     AppComponent,
     NameComponent,
-    LopComponent,
+    LopComponent
   ],
   imports: [
     BrowserModule,
