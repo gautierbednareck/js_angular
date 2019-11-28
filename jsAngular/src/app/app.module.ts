@@ -6,17 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NameComponent } from './name/name.component';
 import { RoutingModule } from './routing/routing.module';
-import { Routing2Module } from './routing2/routing2.module';
+import { LopComponent } from './lop/lop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NameComponent
+    NameComponent,
+    LopComponent,
   ],
   imports: [
     BrowserModule,
     RoutingModule,
-    Routing2Module,
     FormsModule
   ],
   providers: [],
