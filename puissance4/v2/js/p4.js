@@ -4,9 +4,11 @@ class P4 {
         this.col=7;
         this.lgn=6;
         this.selector=selector;
+        this.player = 'red';
 
         this.drawGame();
         this.ecoute();
+        this.victoire()
     }
 
     //affichage jeu
@@ -32,6 +34,46 @@ class P4 {
         }
     };
 
+    //la victoire
+    victoire(lgn, col){
+        const that=this;
+
+        //fonction qui retourne l'élément donnée en html
+        function $getCell(i,j){
+            return $(`.col[data-lgn='${i}'][data-col='${j}']`);
+        }
+        // verification par direction sous forme de tab
+        function checkDirection(direction){
+            let total = 0;
+            let i=lgn + direction.i;
+            let j=col + direction.j;
+            let next=$getCell(i,j);
+
+            //i>=0 && i< that.lgn && j >= 0 && j < that.col == intervalle de la grille
+            //$next.data('player') === that.player ==condition victoire
+            while(i>=0 && i< that.lgn && j >= 0 && j < that.col && $next.data('player') === that.player){
+                total++;
+                i+=direction.i;
+                j+=direction.j;                
+                $next=$getCell(i,j);
+            }
+            return total;
+        }
+
+        //fonction condition victoire
+        function checkWin(directionA, directionB){
+            const total = 1 + checkDirection(directionA)+checkDirection(directionB);
+            if (total >= 4){
+                return that.player;
+            } else {
+                return null;
+            }
+        }
+
+
+    }
+
+    //gestion de la souris et du click
     ecoute(){
         const $jeu = $(this.selector);
         const that=this;
@@ -58,13 +100,26 @@ class P4 {
             //on fait la fonction lastCase avec la valeur qu'on vient de recup
             const $last = lastCase($col);
             if ($last != null) {
-                $last.addClass('pred');
+                //selection de la couleur selon joueur
+                $last.addClass(`p${that.player}`);
             }
         });
 
         //quand on l'enlève
         $jeu.on('mouseleave', '.col', function(){
-            $('.col').removeClass('pred');
+            //selection de la couleur selon joueur
+            $('.col').removeClass(`p${that.player}`);
         });
+
+        //vérifie quand on click
+        $jeu.on('click', '.col.empty', function(){
+            //on réucpère et on retourne la dernière case
+            const col=$(this).data('col');
+            const $last = lastCase(col);
+            $last.addClass(`${that.player}`).removeClass(` empty p${that.player}`).data('player', `${that.player}`);
+            //si that.player = red alors on le passe a yellow sinon on met red/ switch des joueurs
+            that.player = (that.player === 'red') ? 'yellow' : 'red' ;
+        });
+
     }
 }
