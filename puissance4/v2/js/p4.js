@@ -47,7 +47,7 @@ class P4 {
             let total = 0;
             let i=lgn + direction.i;
             let j=col + direction.j;
-            let next=$getCell(i,j);
+            let $next=$getCell(i,j);
 
             //i>=0 && i< that.lgn && j >= 0 && j < that.col == intervalle de la grille
             //$next.data('player') === that.player ==condition victoire
@@ -70,7 +70,29 @@ class P4 {
             }
         }
 
-
+        //fonction vérif axe horizontale
+        function checkHorizon(){
+            //retourne deux objet qui ont toujours deux valeur i et j
+            // on passe de colone en colone
+            return checkWin({i:0,j:-1},{i:0,j:1});
+        }
+                //fonction vérif axe horizontale
+        function checkVerti(){
+            //retourne deux objet qui ont toujours deux valeur i et j
+            //on passe de ligne en ligne
+            return checkWin({i:-1,j:0},{i:1,j:0});
+        }
+        function checkDiag1(){
+            //la première diagonale
+            return checkWin({i:1,j:1},{i:-1,j:-1});
+        }
+        function checkDiag2(){
+            //la deuxième diagonale
+            return checkWin({i:1,j:-1},{i:-1,j:1});
+        }
+        
+        //on le retourne si une des valeur n'est pas null 
+        return checkHorizon() || checkVerti() || checkDiag1() || checkDiag2();
     }
 
     //gestion de la souris et du click
@@ -116,9 +138,23 @@ class P4 {
             //on réucpère et on retourne la dernière case
             const col=$(this).data('col');
             const $last = lastCase(col);
+            //p${that.player} pour le faire selon valeur joueur pred/pyellow
             $last.addClass(`${that.player}`).removeClass(` empty p${that.player}`).data('player', `${that.player}`);
+
+            //verif gagnant appel fonction
+            const winner = that.victoire($last.data('lgn'),$last.data('col'));
+            
             //si that.player = red alors on le passe a yellow sinon on met red/ switch des joueurs
             that.player = (that.player === 'red') ? 'yellow' : 'red' ;
+
+            //verif gagnant
+            if (winner) {
+                console.log(`Les ${winner} ont gagné`);
+                //on réactive le bouton restart si des gens gagne
+                $('#restart').css('visibility',"visible");
+                return;
+            }
+
         });
 
     }
