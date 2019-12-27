@@ -1,0 +1,39 @@
+body{
+    background: #bcd6f2;
+    text-align: center;
+
+}
+#game{
+    display: inline-block;
+    text-align: center;
+    background: #007bff;
+}
+.col{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #bcd6f2;
+    margin:5px;
+    display: inline-block;
+}
+
+.col.empty {
+    /* indique qu'il peut cliquer */
+    cursor: pointer;
+}
+
+.col.red{
+    background: red;
+}
+
+.col.yellow{
+    background:yellow;
+}
+
+.col.pred{
+    background: #8e0f0f;
+}
+
+.col.pyellow{
+    background:#a09b04;
+}
