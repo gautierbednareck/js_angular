@@ -11,6 +11,43 @@
 </head>
 <body>
 	<h1>Puissance 4</h1>
+    <div>
+        <p>
+            Nombre de colonne:
+            <select name="longeur" id="long">
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7" selected="selected">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+            </select> 
+            /Nombre de ligne:
+            <select name="largeur" id="lar">
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6" selected="selected">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+            </select>
+        </p>
+        <button id="actu">Actualiser</button>
+    </div>
+
+    <!-- passage à la ligne -->
+    <br>
+
     <div id="game"></div><br>
     <p style="visibility:hidden;" id="vic"><strong id="vainqueur"></strong></p>
     <button id="restart" style="visibility:hidden;">Restart</button>

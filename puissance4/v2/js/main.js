@@ -1,7 +1,15 @@
 $('game').ready(function(){
     //appel cosntructeurde la classe p4
     const p4 = new P4('#game');
-    
+    p4.test();
+
+    $('#actu').on('click', function() {
+    	//on vide tous
+        $('#game').empty();
+        //on réaffiche la grille
+        p4.drawGame();
+        p4.test();
+    })
     //bouton restart
     $('#restart').on('click', function() {
         //on vide tous

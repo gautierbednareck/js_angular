@@ -13,7 +13,7 @@ class P4 {
     }
 
     //affichage jeu
-    drawGame() {
+    drawGame() {        
         //ciblage "jeu"
         const $jeu = $(this.selector);
         this.victory=false;
@@ -97,13 +97,23 @@ class P4 {
         //on le retourne si une des valeur n'est pas null 
         return checkHorizon() || checkVerti() || checkDiag1() || checkDiag2();
     }
+    test(){
+        var liste, texte;
+        liste = document.getElementById("long");
+        texte = liste.options[liste.selectedIndex].text;
+        var liste2, texte2;
+        liste2 = document.getElementById("lar");
+        texte2 = liste2.options[liste2.selectedIndex].text;
+
+        console.log(`${texte}/${texte2}`);
+    }
 
     //gestion de la souris et du click
     ecoute(){
         const $jeu = $(this.selector);
         const that=this;
         var win=this.victory;
-        console.log(`victoire2=${win}`);
+        //console.log(`victoire2=${win}`);
 
         
         //on cherche la dernière case vide
