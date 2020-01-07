@@ -8,7 +8,7 @@ class P4 {
 
         this.drawGame();
         this.ecoute();
-        this.victoire()
+        this.victoire();
         var victory=false;
     }
 
@@ -17,7 +17,7 @@ class P4 {
         //ciblage "jeu"
         const $jeu = $(this.selector);
         this.victory=false;
-        console.log(`victoire=${this.victory}`);
+        //console.log(`victoire=${this.victory}`);
 
         //boucle d'affichage
         //ligne
@@ -40,7 +40,7 @@ class P4 {
     //la victoire
     victoire(lgn, col){
         const that=this;
-
+        this.victory=false;
         //fonction qui retourne l'élément donnée en html
         function $getCell(i,j){
             return $(`.col[data-lgn='${i}'][data-col='${j}']`);
@@ -102,7 +102,7 @@ class P4 {
     ecoute(){
         const $jeu = $(this.selector);
         const that=this;
-        var win=that.victory;
+        var win=this.victory;
         console.log(`victoire2=${win}`);
 
         
@@ -161,10 +161,12 @@ class P4 {
 
                 //verif gagnant
                 if (winner) {
-                    console.log(`Les ${winner} ont gagné`);
+                    //console.log(`Les ${winner} ont gagné`);
+                    //affichage du nom du gagnant
+                    $('#vic').text(`le gagnant est ${winner}`);
                     win=true;
-                    console.log(`victoire=${win}`);
-                    console.log('------');
+                    //console.log(`victoire=${win}`);
+                    //console.log('------');
                     //affichage du vainqueur
                     $('#vic').css('visibility',"visible");
                     //on réactive le bouton restart si des gens gagne

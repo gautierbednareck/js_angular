@@ -6,8 +6,10 @@ $('game').ready(function(){
     $('#restart').on('click', function() {
         //on vide tous
         $('#game').empty();
-        //on réaffiche
+        //on réaffiche puis réinitialise tout
         p4.drawGame();
+        p4.ecoute();
+        p4.victoire();
         //affichage du vainqueur
         $('#vic').css('visibility','hidden');
         //bouton restart
