@@ -15,7 +15,7 @@ class P4 {
         liste2 = document.getElementById("lar");
         texte2 = liste2.options[liste2.selectedIndex].text;
         valRow=parseInt(texte2);
-        console.log(`${valCol}-${valRow}`);
+        //console.log(`${valCol}-${valRow}`);
 
         this.col=valCol;
         this.lgn=valRow;
@@ -124,7 +124,7 @@ class P4 {
         liste2 = document.getElementById("lar");
         texte2 = liste2.options[liste2.selectedIndex].text;
         newRow=parseInt(texte2);
-        console.log(`${newCol}/${newRow}`);
+        //console.log(`${newCol}/${newRow}`);
         this.col=newCol;
         this.lgn=newRow;
     }
