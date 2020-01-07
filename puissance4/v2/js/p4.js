@@ -1,8 +1,24 @@
 class P4 {
     //selector=balise id selecetionné
     constructor(selector){
-        this.col=7;
-        this.lgn=6;
+        //selection du nb de col
+        //déclaration
+        var liste, texte,liste2, texte2,valCol,valRow;
+        //selection objet
+        liste = document.getElementById("long");
+        //récupération
+        texte = liste.options[liste.selectedIndex].text;
+        //conversion
+        valCol=parseInt(texte);
+        //----
+        //selection du nb de ligne
+        liste2 = document.getElementById("lar");
+        texte2 = liste2.options[liste2.selectedIndex].text;
+        valRow=parseInt(texte2);
+        console.log(`${valCol}-${valRow}`);
+
+        this.col=valCol;
+        this.lgn=valRow;
         this.selector=selector;
         this.player='red';
 
@@ -97,15 +113,20 @@ class P4 {
         //on le retourne si une des valeur n'est pas null 
         return checkHorizon() || checkVerti() || checkDiag1() || checkDiag2();
     }
-    test(){
-        var liste, texte;
+
+    selectGrille(){
+        //col
+        var liste, texte,liste2, texte2,newCol,newRow;
         liste = document.getElementById("long");
         texte = liste.options[liste.selectedIndex].text;
-        var liste2, texte2;
+        newCol=parseInt(texte);
+        //row
         liste2 = document.getElementById("lar");
         texte2 = liste2.options[liste2.selectedIndex].text;
-
-        console.log(`${texte}/${texte2}`);
+        newRow=parseInt(texte2);
+        console.log(`${newCol}/${newRow}`);
+        this.col=newCol;
+        this.lgn=newRow;
     }
 
     //gestion de la souris et du click
