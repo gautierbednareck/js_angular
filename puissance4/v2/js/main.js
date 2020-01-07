@@ -8,6 +8,9 @@ $('game').ready(function(){
         $('#game').empty();
         //on réaffiche
         p4.drawGame();
+        //affichage du vainqueur
+        $('#vic').css('visibility','hidden');
+        //bouton restart
         $('#restart').css('visibility','hidden');
     })
 });

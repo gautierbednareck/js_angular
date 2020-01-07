@@ -4,17 +4,21 @@ class P4 {
         this.col=7;
         this.lgn=6;
         this.selector=selector;
-        this.player = 'red';
+        this.player='red';
 
         this.drawGame();
         this.ecoute();
         this.victoire()
+        var victory=false;
     }
 
     //affichage jeu
     drawGame() {
         //ciblage "jeu"
         const $jeu = $(this.selector);
+        this.victory=false;
+        console.log(`victoire=${this.victory}`);
+
         //boucle d'affichage
         //ligne
         for(let lgn=0;lgn<this.lgn;lgn++){
@@ -29,8 +33,7 @@ class P4 {
                 $lgn.append($col);
             }
             //ajout tableau au jeu 
-            $jeu.append($lgn);
-            
+            $jeu.append($lgn); 
         }
     };
 
@@ -99,6 +102,10 @@ class P4 {
     ecoute(){
         const $jeu = $(this.selector);
         const that=this;
+        var win=that.victory;
+        console.log(`victoire2=${win}`);
+
+        
         //on cherche la dernière case vide
         function lastCase(col){
             //retourne tous les elements avec le meme id
@@ -117,44 +124,54 @@ class P4 {
 
         //quand on passe la souris dessus
         $jeu.on('mouseenter', '.col.empty', function(){
-            //on récupère la colonne
-            const $col = $(this).data('col');
-            //on fait la fonction lastCase avec la valeur qu'on vient de recup
-            const $last = lastCase($col);
-            if ($last != null) {
-                //selection de la couleur selon joueur
-                $last.addClass(`p${that.player}`);
+            if (!win){
+                //on récupère la colonne
+                const $col = $(this).data('col');
+                //on fait la fonction lastCase avec la valeur qu'on vient de recup
+                const $last = lastCase($col);
+                if ($last != null) {
+                    //selection de la couleur selon joueur
+                    $last.addClass(`p${that.player}`);
+                }
             }
         });
 
         //quand on l'enlève
         $jeu.on('mouseleave', '.col', function(){
-            //selection de la couleur selon joueur
-            $('.col').removeClass(`p${that.player}`);
+            if (!win){
+                //selection de la couleur selon joueur
+                $('.col').removeClass(`p${that.player}`);
+            }
         });
 
         //vérifie quand on click
         $jeu.on('click', '.col.empty', function(){
-            //on réucpère et on retourne la dernière case
-            const col=$(this).data('col');
-            const $last = lastCase(col);
-            //p${that.player} pour le faire selon valeur joueur pred/pyellow
-            $last.addClass(`${that.player}`).removeClass(` empty p${that.player}`).data('player', `${that.player}`);
+            if (!win){
+                //on réucpère et on retourne la dernière case
+                const col=$(this).data('col');
+                const $last = lastCase(col);
+                //p${that.player} pour le faire selon valeur joueur pred/pyellow
+                $last.addClass(`${that.player}`).removeClass(` empty p${that.player}`).data('player', `${that.player}`);
 
-            //verif gagnant appel fonction
-            const winner = that.victoire($last.data('lgn'),$last.data('col'));
-            
-            //si that.player = red alors on le passe a yellow sinon on met red/ switch des joueurs
-            that.player = (that.player === 'red') ? 'yellow' : 'red' ;
+                //verif gagnant appel fonction
+                const winner = that.victoire($last.data('lgn'),$last.data('col'));
+                
+                //si that.player = red alors on le passe a yellow sinon on met red/ switch des joueurs
+                that.player = (that.player === 'red') ? 'yellow' : 'red' ;
 
-            //verif gagnant
-            if (winner) {
-                console.log(`Les ${winner} ont gagné`);
-                //on réactive le bouton restart si des gens gagne
-                $('#restart').css('visibility',"visible");
-                return;
+                //verif gagnant
+                if (winner) {
+                    console.log(`Les ${winner} ont gagné`);
+                    win=true;
+                    console.log(`victoire=${win}`);
+                    console.log('------');
+                    //affichage du vainqueur
+                    $('#vic').css('visibility',"visible");
+                    //on réactive le bouton restart si des gens gagne
+                    $('#restart').css('visibility',"visible");
+                    return;
+                }
             }
-
         });
 
     }
