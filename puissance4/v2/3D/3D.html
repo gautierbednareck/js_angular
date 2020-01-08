@@ -1,0 +1,39 @@
+<!-- AUTEUR: ADRIEN AUBERT -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>TP 3</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+			.centre{text-align: center;}
+		</style>
+	</head>
+	<body>
+		<!-- API importe du site de Three.js -->
+		<script src="http://threejs.org/build/three.min.js"></script>
+		<script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+		<script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+        <script src="https://threejs.org/examples/js/controls/DragControls.js"></script>
+        <script src="https://threejs.org/examples/js/controls/stats.js"></script>
+		<script src="http://threejs.org/examples/js/libs/dat.gui.min.js"></script>
+
+		<!-- Bibliotheques en local -->
+		<script src="lib/Coordinates.js"></script>
+
+		<!-- Un titre centre -->
+		<h1 class="centre">Puissance 4 en 3D</h1>
+
+		<!-- Pour mettre le rendu Web GL centre -->
+		<div id="webGL" class="centre"></div>
+
+		<!-- Mon script avec un chemin relatif -->
+		<script src="3D.js"></script>
+		<script>
+			addToDOM();
+		</script>
+
+	</body>
+</html>
