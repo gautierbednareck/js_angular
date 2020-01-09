@@ -1,5 +1,5 @@
 class P4 {
-    //selector=balise id selecetionné
+        //selector=balise id selecetionné
     constructor(selector){
         //selection du nb de col
         //déclaration
@@ -25,7 +25,14 @@ class P4 {
         this.drawGame();
         this.ecoute();
         this.victoire();
+        //victoire
         var victory=false;
+        //conpteur
+        var count=0;
+    }
+
+    getCount(){
+        return this.count;
     }
 
     //affichage jeu
@@ -33,6 +40,9 @@ class P4 {
         //ciblage "jeu"
         const $jeu = $(this.selector);
         this.victory=false;
+        this.count=0;
+        $('#countCoup').text(`count: ${this.count}`);
+
         //console.log(`victoire=${this.victory}`);
 
         //boucle d'affichage
@@ -127,6 +137,8 @@ class P4 {
         //console.log(`${newCol}/${newRow}`);
         this.col=newCol;
         this.lgn=newRow;
+        this.count=0;
+
     }
 
     //gestion de la souris et du click
@@ -134,7 +146,7 @@ class P4 {
         const $jeu = $(this.selector);
         const that=this;
         var win=this.victory;
-        //console.log(`victoire2=${win}`);
+        var compteur=this.getCount();
 
         
         //on cherche la dernière case vide
@@ -178,6 +190,9 @@ class P4 {
         //vérifie quand on click
         $jeu.on('click', '.col.empty', function(){
             if (!win){
+                //affichage compteur coup 
+                compteur++;
+                $('#countCoup').text(`count: ${compteur}`);
                 //on réucpère et on retourne la dernière case
                 const col=$(this).data('col');
                 const $last = lastCase(col);
@@ -202,6 +217,7 @@ class P4 {
                     $('#vic').css('visibility',"visible");
                     //on réactive le bouton restart si des gens gagne
                     $('#restart').css('visibility',"visible");
+                    compteur=0;
                     return;
                 }
             }
