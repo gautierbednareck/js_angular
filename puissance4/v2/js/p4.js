@@ -10,12 +10,22 @@ class P4 {
         texte = liste.options[liste.selectedIndex].text;
         //conversion
         valCol=parseInt(texte);
-        //----
+        //-----------------------
         //selection du nb de ligne
         liste2 = document.getElementById("lar");
         texte2 = liste2.options[liste2.selectedIndex].text;
         valRow=parseInt(texte2);
         //console.log(`${valCol}-${valRow}`);
+        //-----------------
+        //nb condition victoire
+       	var liste3, valV;
+	    liste3 = document.getElementById("nbVic");
+	    valV = liste3.options[liste3.selectedIndex].text;
+	   	valV=parseInt(valV);
+	   	//console.log(valV)
+	    //----------------
+
+
         var J1= new player("joueur 1","red");
         var J2= new player("joueur 2","yellow");
         var joueurs=[J1,J2];
@@ -26,6 +36,7 @@ class P4 {
         this.lgn=valRow;
         this.selector=selector;
         this.player='red';
+        this.valvic=valV;
 
         this.drawGame();
         this.ecoute();
@@ -78,10 +89,13 @@ class P4 {
     victoire(lgn, col){
         const that=this;
         this.victory=false;
+        var nbVictoire=this.valvic;
+
         //fonction qui retourne l'élément donnée en html
         function $getCell(i,j){
             return $(`.col[data-lgn='${i}'][data-col='${j}']`);
         }
+
         // verification par direction sous forme de tab
         function checkDirection(direction){
             let total = 0;
@@ -103,7 +117,7 @@ class P4 {
         //fonction condition victoire
         function checkWin(directionA, directionB){
             const total = 1 + checkDirection(directionA)+checkDirection(directionB);
-            if (total >= 4){
+            if (total >= nbVictoire){
                 return that.player;
             } else {
                 return null;
@@ -150,6 +164,13 @@ class P4 {
         this.lgn=newRow;
         this.count=0;
 
+    }
+    selectNbVictoire() {
+    	var liste3, valV2;
+	    liste3 = document.getElementById("nbVic");
+	    valV2 = liste3.options[liste3.selectedIndex].text;
+	   	valV2=parseInt(valV2);
+	   	this.valvic=valV2;
     }
 
     //gestion de la souris et du click
