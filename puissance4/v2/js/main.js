@@ -10,7 +10,7 @@ $('game').ready(function(){
         //on réaffiche la grille
         p4.drawGame();
         p4.selectNbVictoire();
-        //p4.selectName();
+        p4.selectName();
         p4.selectColor();     
     })
     //bouton restart
@@ -19,6 +19,7 @@ $('game').ready(function(){
         $('#game').empty();
         //on réaffiche puis réinitialise tout
         p4.selectNbVictoire()
+        p4.selectColor();     
         p4.drawGame();
         p4.ecoute();
         p4.victoire();

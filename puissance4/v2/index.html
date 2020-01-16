@@ -53,12 +53,11 @@
                 <option value="8">8</option>
   
             </select>
-            <!-- <br>
-            	selectNameFonction
+            <br>
             Pseudo J1:
-            <input type="text" id="surname1" name="name1" value="name1">
+            <input type="text" id="surname1" name="name1">
             /Pseudo J2:
-            <input type="text" id="surname2" name="name2" value="name2"> -->
+            <input type="text" id="surname2" name="name2"> 
             <br>
 	            Couleur J1:
 	            <input type="color" id="Color1" name="Color1">
@@ -80,5 +79,21 @@
     <div id="game"></div><br>
     <p style="visibility:hidden;" id="vic"><strong id="vainqueur"></strong></p>
     <button id="restart" style="visibility:hidden;">Restart</button>
+
+    <h1>Historique des parties </h1>
+        <ul id="listeBataille">
+        </ul>
+
+        <script type="text/javascript">
+            for (var i = 0; i < localStorage.length; i++) {
+              var newLis = document.createElement('li');
+              var joueur1 = localStorage.getItem('NomJoueur1');
+              var joueur2 = localStorage.getItem('NomJoueur2');
+              var gagnant = localStorage.getItem('Gagnant');
+              var dat = localStorage.getItem('Date');
+              newLis.innerHTML = "Le joueur 1 " +joueur1+ " a affronté " + joueur2 + " le " + dat + " et le gagnant est " + gagnant;
+              document.getElementById('listeBataille').appendChild(newLis);
+            }
+        </script>
 </body>
 </html>

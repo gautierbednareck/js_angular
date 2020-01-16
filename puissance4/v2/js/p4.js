@@ -30,6 +30,7 @@ class P4 {
         var J1= new player("joueur 1","red");
         var J2= new player("joueur 2","yellow");
         var joueurs=[J1,J2];
+	   	//$('.col.red').css({"background-color": "#ff0000"});
 
         console.log(joueurs)
 
@@ -172,26 +173,32 @@ class P4 {
 	   	this.valvic=valV2;
     }
 
-    /*
-    selectNameFonction
     selectName() {
     	var valLis, name, valLis2, name2;
-	    valLis = document.getElementById("surname1");
-	    name = valLis.options[valLis.selectedIndex].text;
+	    name = document.getElementById("surname1").value;
 	   	if (name != null){
-	    	this.joueurs[0].setPseudo(name)
+	    	//this.joueurs[0].setPseudo(name);
+	    	console.log(name);
 	    }
-	   	valLis2 = document.getElementById("surname2");
-	    name2 = valLis2.options[valLis2.selectedIndex].text;
+	   	name2 = document.getElementById("surname2").value;
 	    if (name2 != null){
-	    	this.joueurs[0].setPseudo(name2)
-
+	    	//this.joueurs[1].setPseudo(name2);
+	    	console.log(name2);
 	    }
-    }*/
+    }
     selectColor() {
     	var valLis, C, valLis2, C2;
 	    C = document.getElementById("Color1").value;
-	   	C2 = document.getElementById("Color2");
+	   	C2 = document.getElementById("Color2").value;
+	   	$("p").css("color", "pink");
+	   	$('.col.red').css("background-color",'');
+	   	$('.col.red').css({"background-color": `${C}`});
+	   	$('.col.yellow').css({"background-color": `${C2}`});
+	   	$('#Color1').attr('value',`${C}`);
+	    $('#Color2').attr('value',`${C2}`);
+
+	   	//.col.pred
+	   	//.col.pyellow
 	    console.log(C);
 	    console.log(C2);
 
@@ -264,6 +271,8 @@ class P4 {
 
                 //verif gagnant
                 if (winner) {
+                	var today = new Date;
+                	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
                     //console.log(`Les ${winner} ont gagné`);
                     //affichage du nom du gagnant
                     $('#vic').text(`le gagnant est ${winner}`);
@@ -274,6 +283,10 @@ class P4 {
                     $('#vic').css('visibility',"visible");
                     //on réactive le bouton restart si des gens gagne
                     $('#restart').css('visibility',"visible");
+                    localStorage.setItem('NomJoueur1',document.getElementById("surname1").value);
+                    localStorage.setItem('NomJoueur2',document.getElementById("surname2").value);
+                    localStorage.setItem('Gagnant',`${winner}`);
+                    localStorage.setItem('Date',date);
                     compteur=0;
                     return;
                 }

@@ -48,17 +48,17 @@ h1
 }
 
 .col.red{
-    background: #268fff;
+    background-color:#ff0000;
 }
 
 .col.yellow{
-    background:yellow;
+    background-color:#f3ff4c;
 }
 
 .col.pred{
-    background: #8e0f0f;
+    background-color: #ff0000;
 }
 
 .col.pyellow{
-    background:#a09b04;
+    background-color:#f3ff4c;
 }
