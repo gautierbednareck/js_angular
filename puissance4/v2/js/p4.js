@@ -16,6 +16,11 @@ class P4 {
         texte2 = liste2.options[liste2.selectedIndex].text;
         valRow=parseInt(texte2);
         //console.log(`${valCol}-${valRow}`);
+        var J1= new player("joueur 1","red");
+        var J2= new player("joueur 2","yellow");
+        var joueurs=[J1,J2];
+
+        console.log(joueurs)
 
         this.col=valCol;
         this.lgn=valRow;
@@ -33,6 +38,12 @@ class P4 {
 
     getCount(){
         return this.count;
+    }
+
+    surnom(name){
+        $('#surname').text(`${name}`);
+
+        
     }
 
     //affichage jeu

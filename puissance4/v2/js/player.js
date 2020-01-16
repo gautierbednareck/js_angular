@@ -1,4 +1,4 @@
-class P4 {
+class player {
     //selector=balise id selecetionné
     constructor(pseudo,couleur)
     {
