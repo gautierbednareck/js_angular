@@ -9,8 +9,9 @@ $('game').ready(function(){
         p4.selectGrille();
         //on réaffiche la grille
         p4.drawGame();
-        p4.selectNbVictoire()
-       
+        p4.selectNbVictoire();
+        //p4.selectName();
+        p4.selectColor();     
     })
     //bouton restart
     $('#restart').on('click', function() {

@@ -24,7 +24,8 @@ class P4 {
 	   	valV=parseInt(valV);
 	   	//console.log(valV)
 	    //----------------
-
+	    $('#Color1').attr('value','#ff0000');
+	    $('#Color2').attr('value','#f3ff4c');
 
         var J1= new player("joueur 1","red");
         var J2= new player("joueur 2","yellow");
@@ -52,9 +53,7 @@ class P4 {
     }
 
     surnom(name){
-        $('#surname').text(`${name}`);
-
-        
+        $('#surname').text(`${name}`);    
     }
 
     //affichage jeu
@@ -172,6 +171,32 @@ class P4 {
 	   	valV2=parseInt(valV2);
 	   	this.valvic=valV2;
     }
+
+    /*
+    selectNameFonction
+    selectName() {
+    	var valLis, name, valLis2, name2;
+	    valLis = document.getElementById("surname1");
+	    name = valLis.options[valLis.selectedIndex].text;
+	   	if (name != null){
+	    	this.joueurs[0].setPseudo(name)
+	    }
+	   	valLis2 = document.getElementById("surname2");
+	    name2 = valLis2.options[valLis2.selectedIndex].text;
+	    if (name2 != null){
+	    	this.joueurs[0].setPseudo(name2)
+
+	    }
+    }*/
+    selectColor() {
+    	var valLis, C, valLis2, C2;
+	    C = document.getElementById("Color1").value;
+	   	C2 = document.getElementById("Color2");
+	    console.log(C);
+	    console.log(C2);
+
+    }
+    
 
     //gestion de la souris et du click
     ecoute(){
