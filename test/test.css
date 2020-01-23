@@ -1,0 +1,29 @@
+html {
+ 
+}
+#navbar {
+  bottom: 0;
+  width: 100%;
+  display: block;
+  transition: bottom 0.8s;
+}
+#btnbar {
+  bottom: 0;
+  display: block;
+  transition: bottom 0.8s;
+}
+.btn-primary{
+  background: maroon;
+  border-radius: 100%;
+}
+
+.abc
+{
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.Content{
+}
+
